@@ -103,29 +103,29 @@ public class CoolWeatherDB {
 	/*
 	 * 将Country实例存储到数据库
 	 */
-	public void saveCountry(Country country){
-		if(country !=null){
+	public void saveCounty(County county){
+		if(county !=null){
 			ContentValues values=new ContentValues();
-			values.put("country_name", country.getCountryName());
-			values.put("country_code", country.getCountryCode());
-			values.put("city_id", country.getId());
+			values.put("country_name", county.getCountryName());
+			values.put("country_code", county.getCountryCode());
+			values.put("city_id", county.getId());
 			db.insert("Country", null, values);
 		}
 	}
 	/*
 	 * 从数据库读取某城市下所有县信息
 	 */
-	public List<Country>loadCounties(int cityId){
-		List<Country>list=new ArrayList<Country>();
+	public List<County>loadCounties(int cityId){
+		List<County>list=new ArrayList<County>();
 		Cursor cursor=db.query("Country", null, "city_id=?", new String[]{String.valueOf(cityId)}, null, null, null);
 		if(cursor.moveToNext()){
 			do{
-				Country country = new Country();
-				country.setId(cursor.getInt(cursor.getColumnIndex("id")));
-				country.setCountryName(cursor.getString(cursor.getColumnIndex("country_code")));
-				country.setCountryCode(cursor.getString(cursor.getColumnIndex("country_code")));
-				country.setCityId(cityId);
-				list.add(country);
+				County county = new County();
+				county.setId(cursor.getInt(cursor.getColumnIndex("id")));
+				county.setCountryName(cursor.getString(cursor.getColumnIndex("country_code")));
+				county.setCountryCode(cursor.getString(cursor.getColumnIndex("country_code")));
+				county.setCityId(cityId);
+				list.add(county);
 			}while(cursor.moveToNext());
 		}
 		return list;

@@ -1,7 +1,6 @@
 package com.coolweather.app.model;
 
-public class Country {
-
+public class County {
 	private int id;
 	private String countryName;
 	private String countryCode;
@@ -31,6 +30,4 @@ public class Country {
 	public void setCountryCode(String countryCode) {
 		this.countryCode = countryCode;
 	}
-	
-	
 }
